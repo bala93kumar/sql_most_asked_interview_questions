@@ -44,3 +44,4 @@ from cte1
 select  min(event_Date) , max(event_Date) ,count(1), period_start prev_date
 from cte2
 group by groupbykey
+

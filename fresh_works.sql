@@ -29,7 +29,15 @@ as
 (
 select * ,  row_number() over(partition by  sku_id,year(price_date), month(price_date)  order by price_date desc) as rn  from sku 
 )
-select sku_id , price_date as next_date, price from sku where day(price_date) = 1
-union all
+##select * from table1 
+##select sku_id , price_date as next_date, price from sku where day(price_date) = 1
+##union all
 select  sku_id  , date_format( date_add(price_date, interval + 1 month),"%Y-%m-01") as next_date , price from table1 where rn = 1
+
+select * from sku
+
+select sku_id , date_format(price_date , "%Y-%m-%d") from sku
+
+select sku_id , date_add(price_date, interval - 1 day) from sku
+
 
